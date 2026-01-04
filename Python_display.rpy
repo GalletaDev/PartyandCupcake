@@ -93,88 +93,6 @@ init python:
 
 
 
-    # class RGBTrail(renpy.Displayable):
-    #     def __init__(self, image="choko/choko_normal.png", offset=8, speed=0.1, **kwargs):
-    #         super(RGBTrail, self).__init__(**kwargs)
-    #         self.image = Image(image)
-    #         self.offset = offset  # cuanto se separan los colores
-    #         self.speed = speed    # velocidad del parpadeo / ciclo
-    #         self.time = 0
-    #         self.colors = [
-    #             (1.0, 0.2, 0.2),  # rojo inicial
-    #             (0.2, 1.0, 0.2),  # verde inicial
-    #             (0.2, 0.2, 1.0)   # azul inicial
-    #         ]
-
-    #     def randomize_colors(self):
-    #         # Genera 3 colores aleatorios (brillantes)
-    #         self.colors = [
-    #             (random.uniform(0.5, 1.0), random.uniform(0.0, 1.0), random.uniform(0.0, 1.0))
-    #             for _ in range(3)
-    #         ]
-
-    #     def render(self, width, height, st, at):
-    #         base = self.image
-    #         base_render = renpy.render(base, width, height, st, at)
-    #         render = renpy.Render(base_render.width, base_render.height)
-
-    #         self.time += self.speed
-
-    #         off_x = int(math.sin(self.time) * self.offset)
-    #         off_y = int(math.cos(self.time * 1.3) * self.offset / 2)
-
-    #         # Cada cierto tiempo, cambia los colores aleatoriamente
-    #         if random.random() < 0.05:  # 5% de probabilidad por frame
-    #             self.randomize_colors()
-
-    #         # Aplica los colores actuales
-    #         for i, (r, g, b) in enumerate(self.colors):
-    #             colored_img = im.MatrixColor(base, im.matrix.tint(r, g, b))
-
-    #             # Renderiza la imagen coloreada
-    #             col_render = renpy.render(colored_img, width, height, st, at)
-
-    #             # Posiciones distintas para dar el efecto de vibración
-    #             if i == 0:
-    #                 render.blit(col_render, (off_x, off_y))
-    #             elif i == 1:
-    #                 render.blit(col_render, (-off_x, off_y))
-    #             else:
-    #                 render.blit(col_render, (0, -off_y))
-
-    #         renpy.redraw(self, 0.04)
-    #         return render
-
-
-        # def render(self, width, height, st, at):
-        #     # Render base
-        #     base_render = renpy.render(self.image, width, height, st, at)
-        #     render = renpy.Render(base_render.width, base_render.height)
-
-        
-        #     # Animación temporal
-        #     self.time += self.speed
-
-        #     # Oscila los offsets con sinusoide para que se muevan suavemente
-        #     off_x = int(math.sin(self.time) * self.offset)
-        #     off_y = int(math.cos(self.time * 1.3) * self.offset / 2)
-
-        #     # Dibujar tres capas (roja, verde, azul)
-        #     render.blit(base_render, (off_x, off_y))
-        #     render.blit(base_render, (-off_x, off_y))
-        #     render.blit(base_render, (0, -off_y))
-
-
-        #     # Redibuja cada frame
-        #     renpy.redraw(self, 0.04)
-        #     return render
-
-
-
-
-
-
-
 init python:
     class GlitchSlices(renpy.Displayable):
         def __init__(self, image="glitch_anchor.webp", max_offset=32, num_blocks=10, **kwargs):
@@ -713,4 +631,5 @@ init python:
                 if temp in self.tags:
                     new_string += "{" + tag + "}"
             return new_string
+
 
